@@ -16,8 +16,7 @@ class DatabaseSeeder extends Seeder
             ->hasTaskLists(10)
             ->create();
 
-        \App\Models\TaskList::factory(10)
-            ->hasTasks(10)
+        \App\Models\Task::factory(100)
             ->create();
 
         // \App\Models\User::factory()->create([
