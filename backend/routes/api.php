@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('task_lists', \App\Http\Controllers\Api\TaskListController::class);
+Route::apiResource('task_lists.tasks', \App\Http\Controllers\Api\TaskController::class)->except('show');
