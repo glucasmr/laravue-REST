@@ -30,7 +30,13 @@ class TaskListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //TODO: validar request (id_user é obrigatório )
+        $request->validate([
+            'title' => 'required|string',
+            'user_id' => 'required|numeric|integer',
+        ]);
+        
+        return $this->taskList->create($request->all());
     }
 
     /**
@@ -38,7 +44,7 @@ class TaskListController extends Controller
      */
     public function show(TaskList $taskList)
     {
-        // return $taskList->with('tasks')->first();
+        // return $taskList->tasks;
         return $taskList;
         
     }
@@ -46,16 +52,17 @@ class TaskListController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, TaskList $taskList)
     {
-        //
+        $taskList->update($request->all()); // retorna true ou false
+        return $taskList;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(TaskList $taskList)
     {
-        //
+        return $taskList->delete();
     }
 }
