@@ -54,6 +54,10 @@ class TaskListController extends Controller
      */
     public function update(Request $request, TaskList $taskList)
     {
+        $request->validate([
+            'title' => 'required|string',
+        ]);
+
         $taskList->update($request->all()); // retorna true ou false
         return $taskList;
     }
