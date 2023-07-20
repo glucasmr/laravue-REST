@@ -19,7 +19,7 @@ class TaskFactory extends Factory
         return [
             'title' => $this->faker->words(3, true),
             'completed' => $this->faker->boolean(),
-            'task_list_id' => $this->faker->numberBetween(0, 100)
+            'task_list_id' => $this->faker->numberBetween(1, 100)
             
         ];
     }
